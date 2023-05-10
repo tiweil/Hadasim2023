@@ -63,7 +63,7 @@ MySQL - A popular relational database management system
 
  At the top of the page is a heder that links to the home page(the current page) and the page for adding a new client, pressing on one of those will send you to the proper page:
 
- ![header](/frontend/screenshots/1.png)
+ ![header](/frontend/screenshots/1%20(1).png)
 
  ### Home page
  In the home page you will see a table that contains all the clients in the system with all their details.
