@@ -1,7 +1,6 @@
 // All the routes that connect the the DB and client.
 import express, {NextFunction, Request, Response} from 'express';
 import client_logic from '../Logic/client_logic';
-import Urls from '../Utils/urls';
 
 // generic router 
 const client_router = express.Router();

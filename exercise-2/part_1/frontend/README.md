@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# Hadasim Exercise 2 part 1
+This is a React TypeScript project with a Node/Express backend and MySQL database that does X, Y, and Z.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started
 
-## Available Scripts
+To get started with this project, you'll need to have Node.js and MySQL installed on your machine.
 
-In the project directory, you can run:
+## Backend Setup
+First, navigate to the backend directory and create a .env file with the following contents:
 
-### `npm start`
+```js
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your-password
+DB_NAME=your-database-name
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Replace your-password and your-database-name with your MySQL password and database name, respectively.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Next, install the required dependencies using the following command:
+```console
+npm install
+```
+You can then start the Node/Express server using the following command:
 
-### `npm test`
+```console
+npm run server
+```
+This will start the server at http://localhost:3001.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Frontend Setup
+Next, navigate to the frontend directory and install the required dependencies using the following command:
 
-### `npm run build`
+```console
+npm install
+```
+### important!
+To enable react hooks, router dom and axios, use the following command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```console
+npm install @types/react-router-dom react-router-dom axios react-hook-form
+```
+You can then start the development server using the following command:
+```console
+npm start
+```
+This will start a local development server at http://localhost:3000, where you can view the app in your browser.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+React - A JavaScript library for building user interfaces
 
-### `npm run eject`
+TypeScript - A superset of JavaScript that adds static type-checking
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Node.js - A JavaScript runtime for building server-side applications
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Express - A popular Node.js framework for building web applications
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+MySQL - A popular relational database management system
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+# image
+![image](../frontend/public/logo192.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you'd like to contribute to this project, please fork the repository and create a pull request with your changes.

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import "./Main.css";
 import Client from "../../../Models/Client";
@@ -51,16 +50,16 @@ function Main(): JSX.Element {
                             <td>{new Date(item.birth_date).toISOString()}</td>
                             <td>{item.phone}</td>
                             <td>{item.cell_phone}</td>
-                            <td>{new Date(item.vaccine_1_date).getFullYear()>new Date(0).getFullYear()?new Date(item.vaccine_1_date).toISOString():""}</td>
+                            <td>{item.vaccine_1_date?new Date(item.vaccine_1_date).toISOString():""}</td>
                             <td>{item.vaccine_1_manufacturer}</td>
-                            <td>{new Date(item.vaccine_2_date).getFullYear()>new Date(0).getFullYear()?new Date(item.vaccine_1_date).toISOString():""}</td>
+                            <td>{item.vaccine_2_date?new Date(item.vaccine_1_date).toISOString():""}</td>
                             <td>{item.vaccine_2_manufacturer}</td>
-                            <td>{new Date(item.vaccine_3_date).getFullYear()>new Date(0).getFullYear()?new Date(item.vaccine_1_date).toISOString():""}</td>
+                            <td>{item.vaccine_3_date?new Date(item.vaccine_1_date).toISOString():""}</td>
                             <td>{item.vaccine_3_manufacturer}</td>
-                            <td>{new Date(item.vaccine_4_date).getFullYear()>new Date(0).getFullYear()?new Date(item.vaccine_1_date).toISOString():""}</td>
+                            <td>{item.vaccine_4_date?new Date(item.vaccine_1_date).toISOString():""}</td>
                             <td>{item.vaccine_4_manufacturer}</td>
-                            <td>{new Date(item.positive_date).getFullYear()>new Date(0).getFullYear()?new Date(item.vaccine_1_date).toISOString():""}</td>
-                            <td>{new Date(item.recovery_date).getFullYear()>new Date(0).getFullYear()?new Date(item.vaccine_1_date).toISOString():""}</td>
+                            <td>{item.positive_date?new Date(item.vaccine_1_date).toISOString():""}</td>
+                            <td>{item.recovery_date?new Date(item.vaccine_1_date).toISOString():""}</td>
                             <td><img className="image"  src={item.client_img} style={{height:"50%"}}/></td>
                         </tr>
                     )}

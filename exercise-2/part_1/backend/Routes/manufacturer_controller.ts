@@ -1,6 +1,5 @@
 // All the routes that connect the the DB and client.
 import express, {NextFunction, Request, Response} from 'express';
-import Urls from '../Utils/urls';
 import manufacturer_logic from '../Logic/manufacturer_logic';
 
 // generic router 

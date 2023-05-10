@@ -7,21 +7,17 @@ import "./Add.css";
 import Client from "../../../Models/Client";
 import { Manufacturer } from "../../../Models/Manufacturer";
 
+
+
 function Add(): JSX.Element {
     const[manufacturers,setManufacturers]=useState<Manufacturer[]>([]);
     const [file, setFile] = useState("");
-    const [alert, setAlert] = useState<Boolean>(false);
-    const clientModel=new Client;
     const [vaccine1,setVaccine1]= useState<Boolean>(false);
     const [vaccine2,setVaccine2]= useState<Boolean>(false);
     const [vaccine3,setVaccine3]= useState<Boolean>(false);
     const [vaccine4,setVaccine4]= useState<Boolean>(false);
     const [isPositive,setPositive]=useState<Boolean>(false);//if the client was positive to covid 19
-    // const isPositive=true;
-    // const vaccine1=true;
-    // const vaccine2=true;
-    // const vaccine3=true;
-    // const vaccine4=true;
+
     const { register, handleSubmit } = useForm<Client>();
     const navigate = useNavigate();
     // const [problem,setProblems]=useState<Problem[]>([]);
@@ -30,6 +26,31 @@ function Add(): JSX.Element {
         .then(response=>setManufacturers(response.data));
 
     },[])
+    // async function compressImage(file: any): Promise<Blob> {
+    //     return new Promise((resolve, reject) => {
+    //       const image = new Image();
+    //       const canvas = document.createElement('canvas');
+    //       const ctx = canvas.getContext('2d');
+    //       image.onload = async () => {
+    //         const width = Math.min(800, image.width); // maximum width of 800 pixels
+    //         const height = Math.min(600, image.height); // maximum height of 600 pixels
+    //         canvas.width = width;
+    //         canvas.height = height;
+    //         ctx?.drawImage(image, 0, 0, width, height);
+    //         const quality = 0.7; // compression quality
+    //         canvas.toBlob((blob) => {
+    //           if (blob) {
+    //             resolve(blob);
+    //           } else {
+    //             reject(new Error('Failed to compress the image'));
+    //           }
+    //         }, 'image/jpeg', quality);
+    //       };
+    //       image.onerror = reject;
+    //       image.src = URL.createObjectURL(file);
+    //     });
+    //   }
+    
 
   //convert a file to string
   const getBase64 = (file: any): Promise<any> => {
@@ -68,6 +89,7 @@ function Add(): JSX.Element {
             setPositive(false);
         }
     };
+  //in case the user says that he was vaccinated for the first time this field will shown up
   const vaccine_1 = () => {
     // setVaccine1(true);
     if (vaccine1) {
@@ -81,7 +103,7 @@ function Add(): JSX.Element {
             <label>manufacturer:</label>
             <select  style={{ height: 30 }} {...register("vaccine_1_manufacturer")}>
                 <option disabled value="">Select manufacturer...</option>
-                {manufacturers.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
+                {manufacturers.map(item => <option key={item.id} value={item.name}>{item.name}</option>)}
             </select>
             
             <label>have you been vaccinated again?</label><br/>
@@ -97,12 +119,12 @@ function Add(): JSX.Element {
       );
     }
   };
+    //in case the user says that he was vaccinated for the 2nd time this field will shown up
   const vaccine_2 = () => {
-    // setVaccine2(true);
     if (vaccine2) {
       return (
         <div>
-            <label>vaccine 1 date:</label>
+            <label>vaccine 2 date:</label>
             <input type="date"  {...register("vaccine_2_date")}/>
 
             <label>manufacturer:</label>
@@ -110,7 +132,6 @@ function Add(): JSX.Element {
                 <option disabled value="">Select manufacturer...</option>
                 {manufacturers.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
             </select>
-            <form>
                 <label>have you been vaccinated again?</label><br/>
                 <input type="radio" value="vaccine3" id="yes"
                     onChange={handleChange} name="vaccine" />
@@ -118,17 +139,16 @@ function Add(): JSX.Element {
                 <input type="radio" value="no3" id="no"
                     onChange={handleChange} name="vaccine" />
                 <label htmlFor="no">No</label>
-            </form>
         </div>
       );
     }
   };
+//in case the user says that he was vaccinated for the 3rd time this field will shown up
   const vaccine_3 = () => {
-    // setVaccine3(true);
     if (vaccine3) {
       return (
         <div>
-            <label>vaccine 1 date:</label>
+            <label>vaccine 3 date:</label>
             <input type="date"  {...register("vaccine_3_date")}/>
 
             <label>manufacturer:</label>
@@ -136,7 +156,6 @@ function Add(): JSX.Element {
                 <option disabled value="">Select manufacturer...</option>
                 {manufacturers.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
             </select>
-            <form>
                 <label>have you been vaccinated again?</label><br/>
                 <input type="radio" value="vaccine4" id="yes"
                     onChange={handleChange} name="vaccine" />
@@ -144,17 +163,16 @@ function Add(): JSX.Element {
                 <input type="radio" value="no4" id="no"
                     onChange={handleChange} name="vaccine" />
                 <label htmlFor="no">No</label>
-            </form>
         </div>
       );
     }
   };
+  //in case the user says that he was vaccinated for the 4th time this field will shown up
   const vaccine_4 = () => {
-    // setVaccine4(true);
     if (vaccine4) {
       return (
         <div>
-            <label>vaccine 1 date:</label>
+            <label>vaccine 4 date:</label>
             <input type="date"  {...register("vaccine_4_date")}/>
 
             <label>manufacturer:</label>
@@ -166,9 +184,8 @@ function Add(): JSX.Element {
       );
     }
   };
-
+//in case the user says that he was found positive to the covid 19 this field will shown up
   const coronaForm=()=>{
-    // setPositive(true);
     if(isPositive){
         return(
             <div>
@@ -189,15 +206,16 @@ function Add(): JSX.Element {
     }
   }
 
-//   const defaultDate=`${new Date(0).getFullYear()}-${new Date(0).getMonth()}-${new Date(0).getDate()}`;
-const defaultDate=new Date(new Date(0).getTime() + (24 * 60 * 60 * 1000)).toJSON().slice(0, 19).replace('T', ' ');
+//after submit the information will send to the new client class and will go to the database
     const send=async(newClient:Client)=>{
         if (newClient.client_img[0]?.size > 57000) {
             console.log("Image size must be smaller than 530KB",newClient.client_img[0]?.size)
+            // newClient.client_img[0]= await compressImage(newClient.client_img[0]);
         } else{
             try {
-                console.log(newClient.client_img[0]);
-                console.log(await getBase64(newClient.client_img[0]));
+                // console.log(newClient.client_img[0]);
+                // console.log(await getBase64(newClient.client_img[0]));
+                //convert the file of image to string so it can be insert to the proper field in the database
                 setFile(await getBase64(newClient.client_img[0]));
                 newClient.client_img= await getBase64(newClient.client_img[0]);
               } catch (err: any) {
@@ -206,25 +224,25 @@ const defaultDate=new Date(new Date(0).getTime() + (24 * 60 * 60 * 1000)).toJSON
             try{
                 //the fields that didnt filled - will be filled automatically
                 newClient.vaccine_1_date=
-                    newClient.vaccine_1_date||defaultDate;
+                    newClient.vaccine_1_date||null;
                 newClient.vaccine_1_manufacturer=
                     newClient.vaccine_1_manufacturer|| "";
                 newClient.vaccine_2_date=
-                    newClient.vaccine_2_date||defaultDate;
+                    newClient.vaccine_2_date||null;
                 newClient.vaccine_2_manufacturer=
                     newClient.vaccine_2_manufacturer|| "";       
                 newClient.vaccine_3_date=
-                    newClient.vaccine_3_date||defaultDate;
+                    newClient.vaccine_3_date||null;
                 newClient.vaccine_3_manufacturer=
                     newClient.vaccine_3_manufacturer|| "";   
                 newClient.vaccine_4_date=
-                    newClient.vaccine_4_date||defaultDate;
+                    newClient.vaccine_4_date||null;
                 newClient.vaccine_4_manufacturer=
                     newClient.vaccine_4_manufacturer|| "";  
                 newClient.positive_date=
-                    newClient.positive_date||defaultDate; 
+                    newClient.positive_date||null; 
                 newClient.recovery_date=
-                    newClient.recovery_date||defaultDate;
+                    newClient.recovery_date||null;
                 newClient.client_img=
                     newClient.client_img||"";
                 axios.post("http://localhost:3001/client/add",newClient)
