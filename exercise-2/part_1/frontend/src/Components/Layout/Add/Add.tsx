@@ -6,7 +6,8 @@ import Header from "../Header/Header";
 import "./Add.css";
 import Client from "../../../Models/Client";
 import { Manufacturer } from "../../../Models/Manufacturer";
-
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 
 function Add(): JSX.Element {
@@ -234,10 +235,32 @@ function Add(): JSX.Element {
     return (
         <div className="Add">
             <Header/>
+            <form onSubmit={handleSubmit(send)}>
+                <Box
+                    component="form"
+                    sx={{
+                    '& .MuiTextField-root': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <div>
+                        <TextField
+                        required
+                        id="standard-required"
+                        label="name"
+                        variant="standard"
+                        {...register("name")}
+                        />
 
+                    </div>
+                </Box>
+            </form>
+
+            
 			<div className="Box">
-                <form onSubmit={handleSubmit(send)}>
                     <h2>add Client</h2>
+                    <form onSubmit={handleSubmit(send)}>
 
                     <label>name:</label>
                     <input type="text"  {...register("name")} required/>
@@ -252,7 +275,7 @@ function Add(): JSX.Element {
                     <input type="text"  {...register("street")} required/>
 
                     <label>building:</label>
-                    <input type="text"  {...register("building")} required/>
+                    <input type="number"  {...register("building")} required/>
 
                     <label>birth date:</label>
                     <input
