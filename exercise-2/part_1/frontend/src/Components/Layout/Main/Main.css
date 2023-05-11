@@ -1,27 +1,12 @@
-/* .Main > table {
-	margin:50px auto;
-    width: 150px;
+html,body,#root{
+    margin:0;
+    padding: 0;
+    height: 100%;
+    text-align: center;
+  }
+.table-container{
+
+    padding-left:5%;
+    padding-bottom: 20px;
+    width:90%;
 }
-
-.Main Table, .Main th, .Main td{
-    border:1px solid;
-    border-collapse: collapse;
-    padding: 10px;
-    width: 70%;
-
-}
-
-.Main tr:nth-child(even){
-    background-color: lightblue;
-}
-
-.Main tr:nth-child(odd){
-    background-color: lightgreen;
-
-}
-
-.Main thead tr:first-child{
-    background-color: lightgray;
-    width: 70%;
-
-} */

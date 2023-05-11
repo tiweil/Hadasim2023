@@ -6,9 +6,16 @@ import Header from "../Header/Header";
 import "./Add.css";
 import Client from "../../../Models/Client";
 import { Manufacturer } from "../../../Models/Manufacturer";
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { Button } from "@mui/material";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
 
 function Add(): JSX.Element {
     const[manufacturers,setManufacturers]=useState<Manufacturer[]>([]);
@@ -72,24 +79,47 @@ function Add(): JSX.Element {
     if (vaccine1) {
       return (
         <div>
-            <label>vaccine 1 date:</label>
-            <input type="date"              
-                {...register("vaccine_1_date")}
-            />
+            <TextField
+                    id="standard-required"
+                    label="date of vaccine 1"
+                    defaultValue=""
+                    variant="standard"
+                    type="date"
+                    InputLabelProps={{
+                    shrink: true,
+                      }}
+                    {...register("vaccine_1_date")}
+                />
+            <div>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel id="demo-simple-select-standard-label">Manufacturer</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        label="Manufacturer"
+                        {...register("vaccine_1_manufacturer")}
+                    >
+                        {manufacturers.map(item => <MenuItem key={item.id} value={item.name} {...register("vaccine_1_manufacturer")}>{item.name}</MenuItem>)}
+                    </Select>
+                </FormControl>
+            </div>    
 
-            <label>manufacturer:</label>
-            <select  style={{ height: 30 }} {...register("vaccine_1_manufacturer")}>
-                <option disabled value="">Select manufacturer...</option>
-                {manufacturers.map(item => <option key={item.id} value={item.name}>{item.name}</option>)}
-            </select>
-            
-            <label>have you been vaccinated again?</label><br/>
-            <input type="radio" value="vaccine2" id="yes"
-                onChange={handleChange} name="vaccine" />
-            <label htmlFor="yes">Yes</label>
-            <input type="radio" value="no2" id="no"
-                onChange={handleChange} name="vaccine" />
-            <label htmlFor="no">No</label>
+            <div>
+                <FormControl>
+                    <FormLabel id="demo-row-radio-buttons-group-label">have you been vaccinated again?</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            onChange={handleChange}
+                            defaultValue="no2"
+                        >
+                        <   FormControlLabel value="vaccine2" control={<Radio />} label="Yes"  />
+                            <FormControlLabel value="no2" control={<Radio />} label="No" />
+                        </RadioGroup>
+                </FormControl>
+            </div>
+
             
 
         </div>
@@ -101,21 +131,48 @@ function Add(): JSX.Element {
     if (vaccine2) {
       return (
         <div>
-            <label>vaccine 2 date:</label>
-            <input type="date"  {...register("vaccine_2_date")}/>
+            <TextField
+                    id="standard-required"
+                    label="date of vaccine 2"
+                    defaultValue=""
+                    variant="standard"
+                    type="date"
+                    InputLabelProps={{
+                    shrink: true,
+                      }}
+                    {...register("vaccine_2_date")}
+                />
+            <div>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel id="demo-simple-select-standard-label">Manufacturer</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        label="Manufacturer"
+                        {...register("vaccine_2_manufacturer")}
+                    >
+                        {manufacturers.map(item => <MenuItem key={item.id} value={item.name} {...register("vaccine_2_manufacturer")}>{item.name}</MenuItem>)}
 
-            <label>manufacturer:</label>
-            <select  style={{ height: 30 }} {...register("vaccine_2_manufacturer")}>
-                <option disabled value="">Select manufacturer...</option>
-                {manufacturers.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
-            </select>
-                <label>have you been vaccinated again?</label><br/>
-                <input type="radio" value="vaccine3" id="yes"
-                    onChange={handleChange} name="vaccine" />
-                <label htmlFor="yes">Yes</label>
-                <input type="radio" value="no3" id="no"
-                    onChange={handleChange} name="vaccine" />
-                <label htmlFor="no">No</label>
+                    </Select>
+                </FormControl>
+            </div>
+
+            <div>
+                <FormControl>
+                    <FormLabel id="demo-row-radio-buttons-group-label">have you been vaccinated again?</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            onChange={handleChange}
+                            defaultValue="no3"
+                        >
+                        <   FormControlLabel value="vaccine3" control={<Radio />} label="Yes"  />
+                            <FormControlLabel value="no3" control={<Radio />} label="No" />
+                        </RadioGroup>
+                </FormControl>
+            </div>
+
         </div>
       );
     }
@@ -125,21 +182,48 @@ function Add(): JSX.Element {
     if (vaccine3) {
       return (
         <div>
-            <label>vaccine 3 date:</label>
-            <input type="date"  {...register("vaccine_3_date")}/>
+            <TextField
+                    id="standard-required"
+                    label="date of vaccine 3"
+                    variant="standard"
+                    type="date"
+                    InputLabelProps={{
+                    shrink: true,
+                      }}
+                    {...register("vaccine_3_date")}
+                />
+            <div>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel id="demo-simple-select-standard-label">Manufacturer</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        label="Manufacturer"
+                        {...register("vaccine_3_manufacturer")}                        
+                    >
+                        {manufacturers.map(item => <MenuItem key={item.id} value={item.name} {...register("vaccine_3_manufacturer")}>{item.name}</MenuItem>)}
 
-            <label>manufacturer:</label>
-            <select  style={{ height: 30 }} {...register("vaccine_3_manufacturer")}>
-                <option disabled value="">Select manufacturer...</option>
-                {manufacturers.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
-            </select>
-                <label>have you been vaccinated again?</label><br/>
-                <input type="radio" value="vaccine4" id="yes"
-                    onChange={handleChange} name="vaccine" />
-                <label htmlFor="yes">Yes</label>
-                <input type="radio" value="no4" id="no"
-                    onChange={handleChange} name="vaccine" />
-                <label htmlFor="no">No</label>
+                    </Select>
+                </FormControl>
+            </div>
+
+            <div>
+                <FormControl>
+                    <FormLabel id="demo-row-radio-buttons-group-label">have you been vaccinated again?</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            onChange={handleChange}
+                            defaultValue="no4"
+                        >
+                        <   FormControlLabel value="vaccine4" control={<Radio />} label="Yes"  />
+                            <FormControlLabel value="no4" control={<Radio />} label="No" />
+                        </RadioGroup>
+                </FormControl>
+            </div>
+
+
         </div>
       );
     }
@@ -149,14 +233,29 @@ function Add(): JSX.Element {
     if (vaccine4) {
       return (
         <div>
-            <label>vaccine 4 date:</label>
-            <input type="date"  {...register("vaccine_4_date")}/>
-
-            <label>manufacturer:</label>
-            <select  style={{ height: 30 }} {...register("vaccine_4_manufacturer")}>
-                <option disabled value="">Select manufacturer...</option>
-                {manufacturers.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
-            </select>
+            <TextField
+                    id="standard-required"
+                    label="date of vaccine 4"
+                    variant="standard"
+                    type="date"
+                    InputLabelProps={{
+                    shrink: true,
+                      }}
+                    {...register("vaccine_4_date")}
+                />
+            <div>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel id="demo-simple-select-standard-label">Manufacturer</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        label="Manufacturer"
+                        {...register("vaccine_4_manufacturer")}
+                    >
+                        {manufacturers.map(item => <MenuItem key={item.id} value={item.name} {...register("vaccine_4_manufacturer")}>{item.name}</MenuItem>)}
+                    </Select>
+                </FormControl>
+            </div>
         </div>
       );
     }
@@ -166,22 +265,32 @@ function Add(): JSX.Element {
     if(isPositive){
         return(
             <div>
-                <label>date of receiving a positive result:</label>
-                <input
-                    className="form-control"
+                <TextField
+                    id="standard-required"
+                    label="date of receiving a positive result"
+                    variant="standard"
                     type="date"
+                    InputLabelProps={{
+                    shrink: true,
+                      }}
                     {...register("positive_date")}
                 />
-                <label>recovery date:</label>
-                <input
-                    className="form-control"
+                <TextField
+                    id="standard-required"
+                    label="recovery date"
+                    variant="standard"
                     type="date"
+                    InputLabelProps={{
+                    shrink: true,
+                      }}
                     {...register("recovery_date")}
                 />
             </div>
         )
     }
   }
+
+ 
 
 //after submit the information will send to the new client class and will go to the database
     const send=async(newClient:Client)=>{
@@ -235,99 +344,162 @@ function Add(): JSX.Element {
     return (
         <div className="Add">
             <Header/>
-            <form onSubmit={handleSubmit(send)}>
-                <Box
-                    component="form"
-                    sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <div>
-                        <TextField
-                        required
-                        id="standard-required"
-                        label="name"
-                        variant="standard"
-                        {...register("name")}
-                        />
+            <div className="card-container">
+                <h2>Add a client</h2>
+                <form onSubmit={handleSubmit(send)}>
+                        <div>
+                            <div>
+                                <span><TextField
+                                    required
+                                    id="standard-required"
+                                    label="name"
+                                    variant="standard"
+                                    type="text"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    sx={{mb:2}}
+                                    {...register("name")}
+                                /></span>
+                                <span><TextField
+                                    required
+                                    id="standard-required"
+                                    label="ID"
+                                    variant="standard"
+                                    type="text"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    sx={{mb:2}}
+                                    {...register("id_card")}
+                                /></span>
+                                <span><TextField
+                                    required
+                                    id="standard-required"
+                                    label="city"
+                                    variant="standard"
+                                    type="text"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    {...register("city")}
+                                /></span>
+                            </div>
+                            <div>
+                                <span><TextField
+                                    required
+                                    id="standard-required"
+                                    label="street"
+                                    variant="standard"
+                                    type="text"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    {...register("street")}
+                                /></span>
+                                <span><TextField
+                                    required
+                                    id="standard-required"
+                                    label="building"
+                                    variant="standard"
+                                    type="number"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    {...register("building")}
+                                /></span>
+                                <span><TextField
+                                    required
+                                    id="standard-required"
+                                    label="birth date"
+                                    defaultValue=""
+                                    variant="standard"
+                                    type="date"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    {...register("birth_date")}
+                                /></span>
+                            </div><br/>
+                            <div>
+                                <span><TextField
+                                    required
+                                    id="standard-required"
+                                    label="phone number"
+                                    variant="standard"
+                                    type="text"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    {...register("phone")}
+                                /></span>
+                                <span><TextField
+                                    required
+                                    id="standard-required"
+                                    label="CellPhone number"
+                                    variant="standard"
+                                    type="text"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    {...register("cell_phone")}
+                                /></span>
+                            </div>
+                            <div>
+                                <FormControl>
+                                    <FormLabel id="demo-row-radio-buttons-group-label">have you been vaccinated?</FormLabel>
+                                    <RadioGroup
+                                        row
+                                        aria-labelledby="demo-row-radio-buttons-group-label"
+                                        name="row-radio-buttons-group"
+                                        onChange={handleChange}
+                                        defaultValue="no1"
+                                    >
+                                        <FormControlLabel value="vaccine1" control={<Radio />} label="Yes"  />
+                                        <FormControlLabel value="no1" control={<Radio />} label="No" />
+                                    </RadioGroup>
+                                </FormControl>                   
+                            </div>
 
-                    </div>
-                </Box>
-            </form>
+                            <div>{vaccine_1()}</div>
+                            <div>{vaccine_2()}</div>
+                            <div>{vaccine_3()}</div>
+                            <div>{vaccine_4()}</div>
 
-            
-			<div className="Box">
-                    <h2>add Client</h2>
-                    <form onSubmit={handleSubmit(send)}>
+                            <div>
+                                <FormControl>
+                                    <FormLabel id="demo-row-radio-buttons-group-label">Have you been positive for Corona in the past?</FormLabel>
+                                    <RadioGroup
+                                        row
+                                        aria-labelledby="demo-row-radio-buttons-group-label"
+                                        name="row-radio-buttons-group"
+                                        onChange={handleChange}
+                                        defaultValue="negative"
+                                    >
+                                        <FormControlLabel value="positive" control={<Radio />} label="Yes"  />
+                                        <FormControlLabel value="negative" control={<Radio />} label="No" />
+                                    </RadioGroup>
+                                </FormControl>
+                            </div>
 
-                    <label>name:</label>
-                    <input type="text"  {...register("name")} required/>
+                            <div>{coronaForm()}</div>
+                            
+                            <div>
+                                <label>upload client's image</label><br/>
+                                <input
+                                    className="form-control"
+                                    type="file"
+                                    {...register("client_img")}
+                                />
+                            </div><br/>
+                            <div className="submitted">
+                                <Button variant="contained" type="submit"  color="success">
+                                    submit
+                                </Button> 
 
-                    <label>ID:</label>
-                    <input type="text"  {...register("id_card")} required/>
+                            </div>
 
-                    <label>city:</label>
-                    <input type="text"  {...register("city")} required/>
-
-                    <label>street:</label>
-                    <input type="text"  {...register("street")} required/>
-
-                    <label>building:</label>
-                    <input type="number"  {...register("building")} required/>
-
-                    <label>birth date:</label>
-                    <input
-                        className="form-control"
-                        type="date"
-                        required
-                        {...register("birth_date")}
-                    />
-
-                    <label>phone number:</label>
-                    <input type="text"  {...register("phone")} required/>
-
-
-                    <label>cell phone number:</label>
-                    <input type="text"  {...register("cell_phone")} required/>
-
-                    <form>
-                        <label>have you been vaccinated?</label><br/>
-                        <input type="radio" value="vaccine1" id="yes"
-                            onChange={handleChange} name="vaccine" />
-                        <label htmlFor="yes">Yes</label>
-                        <input type="radio" value="no1" id="no" 
-                            onChange={handleChange} name="vaccine" />
-                        <label htmlFor="no">No</label>
-                    </form>
-
-                    <div>{vaccine_1()}</div>
-                    <div>{vaccine_2()}</div>
-                    <div>{vaccine_3()}</div>
-                    <div>{vaccine_4()}</div>
-
-                    <form>
-                        <label>Have you been positive for Corona in the past?</label><br/>
-                        <input type="radio" value="positive" id="yes"
-                            onChange={handleChange} name="corona" />
-                        <label htmlFor="yes">Yes</label>
-                        <input type="radio" value="negative" id="no"
-                            onChange={handleChange} name="corona" />
-                        <label htmlFor="no">No</label>
-                    </form>
-
-                    <div>{coronaForm()}</div>
-
-                    <label>image of the client</label>
-                    <input
-                        className="form-control"
-                        type="file"
-                        {...register("client_img")}
-                    />
-
-                    <input type="submit" value="save client" style={{ height: 50, backgroundColor: "lightgreen", borderRadius: 20 }} />
-
+                        </div>
                 </form>
             </div>
 

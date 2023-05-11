@@ -46,6 +46,7 @@ function Main(): JSX.Element {
     return (
         <div className="Main">
             <Header/>
+        <div className="table-container">
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                     <TableHead>
@@ -99,7 +100,9 @@ function Main(): JSX.Element {
                     ))}
                     </TableBody>
                 </Table>
-                </TableContainer>
+            </TableContainer>
+        </div>
+
 
 
         </div>
