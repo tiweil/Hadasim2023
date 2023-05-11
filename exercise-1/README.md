@@ -28,11 +28,6 @@ If the width is odd and shorter than twice its height, the program will print th
 
 ## Running the Program
 
-To run this program, you will need to have C# installed on your computer. Once you have cloned or downloaded this repository, navigate to the directory where the program is saved and run the following command in the terminal:
-
-```console
-dotnet run
-```
-or you can press the debugger.
+To run this program, you will need to have Visual Studio with C# installed on your computer. Once you have cloned or downloaded this repository, open the Visual Studio and press the 'debug' button.
 
 This will compile and execute the program. You will then be prompted with the main menu and can select your desired options.
