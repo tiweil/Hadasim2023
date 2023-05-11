@@ -1,3 +1,24 @@
 .Header {
-	
+	text-align: center;
+    margin-top: 5px;
+    height:130px;
+    
+}
+.header{
+    font-size: 35px;
+    font-weight: 900;
+    padding-bottom: 0%;
+    margin-top:30px;
+    /* font-family: Ink Free ; */
+    
+}
+.header > div {
+    color:rgb(24, 119, 242);
+    display: inline-block;
+    display: -moz-inline-box;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    width: 25%;
+    text-align: center;
+    margin-bottom: 0;
 }

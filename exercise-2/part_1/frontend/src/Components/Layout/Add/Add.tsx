@@ -26,31 +26,7 @@ function Add(): JSX.Element {
         .then(response=>setManufacturers(response.data));
 
     },[])
-    // async function compressImage(file: any): Promise<Blob> {
-    //     return new Promise((resolve, reject) => {
-    //       const image = new Image();
-    //       const canvas = document.createElement('canvas');
-    //       const ctx = canvas.getContext('2d');
-    //       image.onload = async () => {
-    //         const width = Math.min(800, image.width); // maximum width of 800 pixels
-    //         const height = Math.min(600, image.height); // maximum height of 600 pixels
-    //         canvas.width = width;
-    //         canvas.height = height;
-    //         ctx?.drawImage(image, 0, 0, width, height);
-    //         const quality = 0.7; // compression quality
-    //         canvas.toBlob((blob) => {
-    //           if (blob) {
-    //             resolve(blob);
-    //           } else {
-    //             reject(new Error('Failed to compress the image'));
-    //           }
-    //         }, 'image/jpeg', quality);
-    //       };
-    //       image.onerror = reject;
-    //       image.src = URL.createObjectURL(file);
-    //     });
-    //   }
-    
+
 
   //convert a file to string
   const getBase64 = (file: any): Promise<any> => {
