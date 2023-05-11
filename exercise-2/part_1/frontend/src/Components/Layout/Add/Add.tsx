@@ -483,9 +483,9 @@ function Add(): JSX.Element {
                             </div>
 
                             <div>{coronaForm()}</div>
-                            
+                            <br/>
                             <div>
-                                <label>upload client's image</label><br/>
+                                <label className='img'>upload client's image</label><br/>
                                 <input
                                     className="form-control"
                                     type="file"

@@ -62,40 +62,37 @@ MySQL - A popular relational database management system
  while you open the upp in your browser at http://localhost:3000, you will go to the home page.
 
  At the top of the page is a heder that links to the home page(the current page) and the page for adding a new client, pressing on one of those will send you to the proper page:
-
- ![header](/frontend/screenshots/1%20(1).png)
+```markdown
+ ![header](/frontend/screenshots/111.png)
 
  ### Home page
  In the home page you will see a table that contains all the clients in the system with all their details.
-
- ![homePage](/frontend/screenshots/2.png)
+```markdown
+ ![homePage](/frontend/screenshots/222.png)
 
  ### Adding a new client page
  On this page there is a document for filling in details in which all the required details must be filled in, pay attention that all fields are mandatory except vaccination dates, choosing the type of vaccination, the dates of exposure and recovery and choosing a photo.
-
- ![addClientPage](/frontend/screenshots/3.png)
+```markdown
+ ![addClientPage](/frontend/screenshots/333.png)
 
  In the user will be asked if he have been vaccinated, if he choose "yes" option- a new field to fill in vaccination details will be shown up
  and so every time he is asked if he had another vaccination up to fourth vaccination.
-
- ![example1](/frontend/screenshots/4.png)
-
- ![example2](/frontend/screenshots/5.png)
+```markdown
+ ![example1](/frontend/screenshots/444.png)
+```markdown
+ ![example2](/frontend/screenshots/555.png)
 
  The same with the question if he had ever been exposed to the virus.
 
- ![example3](/frontend/screenshots/6.png)
+ ![example3](/frontend/screenshots/666.png)
 
   #### upload an image
   You can pic an image which its size does not exceed 530kb otherwise it will not be possible ro add a client.
-
-  ![uploadImage](/frontend/screenshots/7.png)
+  ```markdown
+  ![uploadImage](/frontend/screenshots/888.png)
 
 When the user submit the document- the new client is added to the data base and the user is automatically transferred back to the home page with the updated table.
 
-![backHome](/frontend/screenshots/8.png)
-
-![image](../frontend/public/logo192.png)
 
 # Contributing
 
